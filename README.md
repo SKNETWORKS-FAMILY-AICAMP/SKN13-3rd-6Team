@@ -115,6 +115,46 @@
 | 협업 및 형상관리        | <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white" /> <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white" /> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" /> |
 
 
+### 📦 3. 데이터 수집 및 전처리
 
+✅ **데이터 내용에 따른 수집 방식 및 형태**
 
+수집한 데이터는 크게 다음 두 가지 형태로 구성:
 
+1.  📁 PDF 형식 문서
+
+정부 기관, 공공기관 등에서 직접 제공하는 저작권 관련 정책/가이드 문서를 다운로드하여 확보
+수집 방식: 공식 웹사이트에서 다운로드 → 텍스트 추출 → Markdown 구조 변환 → 문단 단위 Split
+| 파일명                                     | 주요 내용              |
+| --------------------------------------- | ------------------ |
+| 저작권법(법률).pdf                            | 최신 개정 저작권법 전문      |
+| 저작권상담사례집2024.pdf                        | 상담 사례 기반 질의응답 사례집  |
+| 생성형AI 저작권 가이드라인.pdf                     | 생성형 AI 시대 저작권 가이드  |
+| 최진원 계약 가이드북.pdf                         | 콘텐츠 계약 시 유의사항      |
+| US\_copyright.pdf / wipo\_copyright.pdf | 해외 저작권 기준          |
+| 네이버, 카카오 관련 PDF                         | 주요 플랫폼 약관 및 저작권 정책 |
+
+전처리 방식:
+
+2. 🌐 웹 기반 동적 크롤링 데이터 (CSV / JSON)
+   
+수집 방식: 각 플랫폼 고객센터/FAQ 페이지를 Selenium 기반 동적 크롤링
+
+📄 CSV 파일 (카카오, 유튜브 등)
+| 파일명                           | 설명               |
+| ----------------------------- | ---------------- |
+| kakao\_page.csv               | 카카오 고객센터 문서 목록   |
+| kakao\_policy\_full\_text.csv | 각 페이지의 전체 본문 텍스트 |
+| kakao\_rights\_info.csv       | 콘텐츠 권리 및 신고 가이드  |
+| youtube\_copyright\_tools.csv | 유튜브 저작권 도구 소개    |
+
+🧾 JSON 파일 (인스타그램, 유튜브 FAQ)
+| 파일명                          | 설명             |
+| ---------------------------- | -------------- |
+| instagram\_faq\_answers.json | 인스타그램 공식 FAQ   |
+| youtube\_support\_faq.json   | 유튜브 저작권 관련 FAQ |
+
+전처리 방식:
+- HTML 파싱 후 본문만 추출
+- JSON/CSV 각각 문서 단위로 분리 및 구조 정리
+- FAQ는 질의응답 형태로 구조화 (질문 → 답변)
