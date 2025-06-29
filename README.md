@@ -175,3 +175,36 @@
 | **`source`**    | 특정 키워드 포함 시 수동 분류:<br> - `"저작권법"` → `"저작권법"`<br> - `"dmca"` → `"DMCA"`<br> - `"공공누리"`, `"kogl"` → `"KOGL"`<br> - `"크리에이티브 커먼즈"` → `"CC"`                           | `"KOGL"`, `"DMCA"` 등 |
 | **`topic`**     | 사전 정의된 키워드에 따라 분류:<br> - `"음악"`, `"배경음악"` → `"음악사용"`<br> - `"ai"`, `"인공지능"` → `"ai저작권"`<br> - `"인용"` → `"인용"`<br> - `"계약"` → `"저작권계약"`<br> - `"공공저작물"` → `"공공저작물"` | `"음악사용, ai저작권"` 등    |
 
+### 🤖 4. RAG 기반 챗봇 구현
+
+🔧**시스템 아키텍처**
+[이미지 첨부 예정]
+- LangGraph : 상태 기반 대화 흐름 제어
+- LangChain : RAG, LLMChain, tool integration
+- OpenAI GPT-4.1 : 질의 응답, 분기 판단, 응답 생성
+- ChromaDB + OpenAI Embedding : 벡터 검색 (Retrieval)
+- Chainlit : 대화형 웹 UI 프론트엔드
+
+🧩 **주요 노드 및 흐름 설명**
+| 노드                    | 설명                                                                                |
+| --------------------- | --------------------------------------------------------------------------------- |
+| `extract_name`        | 사용자 이름 추출 (예: "나 홍길동이야") → 맞춤형 응답에 활용                                             |
+| `hyde`                | HYDE 기법으로 검색에 적합한 문장 생성 (`query → hyde_answer`)                                   |
+| `check_route`         | HYDE 결과와 context로 판단하여 라우팅: <br>① `use_rag` <br>② `tool_call` <br>③ `llm_message` |
+| `retrieve`            | RAG 컨텍스트 문서 검색 수행 (`retriever.invoke(hyde_answer)`)                               |
+| `call_tool_llm`       | 도구 호출이 필요한 경우, LLM이 어떤 툴을 사용할지 판단                                                 |
+| `tool_runner`         | 해당 도구 실행 (`search_web`, 외부 API 등)                                                 |
+| `process_tool_result` | 도구 응답 결과 정제 및 유효성 검증                                                              |
+| `synthesize_response` | LLM이 최종 사용자 응답 생성 (이름, 대화 이력, context 반영)                                         |
+| `fallback`            | 검색/도구 모두 실패 시 기본 메시지 생성 (또는 LLM 재질문)                                              |
+💬 **예시 질의응답 시나리오**
+| 사용자 질문                  | 처리 경로                                           | 설명                  |
+| ----------------------- | ----------------------------------------------- | ------------------- |
+| "유튜브에서 배경음악 써도 돼?"      | HYDE → retrieve → synthesize\_response          | RAG 문서에서 유튜브 가이드 검색 |
+| "크리에이티브 커먼즈가 뭐야?"       | HYDE → retrieve → synthesize\_response          | CC 정책 PDF에서 내용 추출   |
+| "최근 인공지능 관련 저작권 뉴스 알려줘" | tool\_call → search\_web → synthesize\_response | 외부 검색 툴 호출          |
+
+### 📁 5. 파일구조
+
+To. 원준
+요기에 파일 구조 넣어줘! 
