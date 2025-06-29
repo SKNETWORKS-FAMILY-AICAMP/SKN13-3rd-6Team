@@ -5,6 +5,7 @@
 **개발기간:** 2025.06.26 ~ 2025.06.30
 
 ## 💻 팀 소개
+팀명: 공구함
 
 <!-- | **기원준👨‍💻** | **강지윤👩‍💻** | **최호연👨‍💻** | **이명인👨‍💻** |
 |:--------------:|:--------------:|:--------------:|:--------------:|
@@ -14,16 +15,16 @@
 <table>
   <tr>
     <td align="center">
-      <img src="" width="100"/><br/>기원준👨‍💻
+      <img src="https://github.com/user-attachments/assets/14543590-abc0-4274-81b2-b62166b4f462" width="100"/><br/>기원준👨‍💻
     </td>
     <td align="center">
-      <img src="" width="100"/><br/>강지윤👩‍💻
+      <img src="https://github.com/user-attachments/assets/a35d2590-93c0-4b86-9145-4ec912ead0b3" width="100"/><br/>강지윤👩‍💻
     </td>
     <td align="center">
-      <img src="" width="100"/><br/>최호연👨‍💻
+      <img src="https://github.com/user-attachments/assets/1f136ac8-52e1-4efd-bcdd-f112a0035666" width="100"/><br/>최호연👨‍💻
     </td>
     <td align="center">
-      <img src="" width="100"/><br/>이명인👨‍💻
+      <img src="https://github.com/user-attachments/assets/044c3463-0670-4fa5-ab1e-cba03e4029b5" width="100"/><br/>이명인👨‍💻
     </td>
   </tr>
   <tr>
@@ -197,6 +198,7 @@
 | `process_tool_result` | 도구 응답 결과 정제 및 유효성 검증                                                              |
 | `synthesize_response` | LLM이 최종 사용자 응답 생성 (이름, 대화 이력, context 반영)                                         |
 | `fallback`            | 검색/도구 모두 실패 시 기본 메시지 생성 (또는 LLM 재질문)                                              |
+
 💬 **예시 질의응답 시나리오**
 | 사용자 질문                  | 처리 경로                                           | 설명                  |
 | ----------------------- | ----------------------------------------------- | ------------------- |
