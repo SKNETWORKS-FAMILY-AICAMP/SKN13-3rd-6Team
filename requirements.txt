@@ -1,0 +1,11 @@
+python
+langchain
+langchain-core
+langchain-openai
+langchain-chroma
+langgraph
+pydantic
+python-dotenv
+chromadb
+openai
+pymupdf # for PyMuPDFLoader, which imports fitz
