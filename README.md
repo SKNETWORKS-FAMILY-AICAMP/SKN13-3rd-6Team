@@ -209,8 +209,9 @@
 
 ### 📌 5. RAG 기반 챗봇 구현🤖
 
-🔧**시스템 아키텍처**
-![image](https://github.com/user-attachments/assets/47b56c74-dbff-4418-9147-f6bc3aca8f15)
+🔧**시스템 아키텍처**<br>
+<img src="https://github.com/user-attachments/assets/47b56c74-dbff-4418-9147-f6bc3aca8f15" width="600" height="400" alt="system"> <br>
+
 
 - LangGraph : 상태 기반 대화 흐름 제어
 - LangChain : RAG, LLMChain, tool integration
@@ -218,8 +219,13 @@
 - ChromaDB + OpenAI Embedding : 벡터 검색 (Retrieval)
 - Chainlit : 대화형 웹 UI 프론트엔드
 
+
+⏩ **Langgraph 진화 과정**<br>
+
+![001](https://github.com/user-attachments/assets/c9891f1a-0463-418f-8ab5-384c37bcb37b)
+
 🧩 **주요 노드 및 흐름 설명**<br>
-<img src="https://github.com/user-attachments/assets/f3036216-f3b0-40ee-ade6-dd2bac03feae" width="500" height="700" alt="langgraph_image"> <br>
+<img src="https://github.com/user-attachments/assets/f3036216-f3b0-40ee-ade6-dd2bac03feae" width="400" height="700" alt="langgraph_image"> <br>
 
 | **노드 이름**             | **설명**                                                                                                           |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -243,16 +249,30 @@
 | "크리에이티브 커먼즈가 뭐야?"       | HYDE → retrieve → synthesize\_response          | CC 정책 PDF에서 내용 추출   |
 | "최근 인공지능 관련 저작권 뉴스 알려줘" | tool\_call → search\_web → synthesize\_response | 외부 검색 툴 호출          |
 
-⏩ **Langgraph 개발 과정 문서**
+ ### 📌 6. 챗봇 성능 평가 결과
+ ✅ 성능 요약 지표
+| Metric            | Score      |
+| ----------------- | ---------- |
+| Faithfulness      | **0.8668** |
+| Answer Relevancy  | 0.6371     |
+| Context Recall    | 0.8000     |
+| Context Precision | 0.8000     |
 
- ### 📌 6. 챗봇 평가지표(LAGAS)
- 
+⏩ Faithfulness는 답변이 content와 얼마나 일치하는지를,
+Answer Relevancy는 질문과의 관련성을,
+Context Recall/Precision은 검색된 문서가 정답과 얼마나 일치하는지를 나타냅니다.
+<div style="display: flex; justify-content: space-between; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/109834c9-2c17-483d-baaa-5c88536adb68" width="400"/>
+  <img src="https://github.com/user-attachments/assets/e1b971e6-a398-477d-b9b3-f1fe8b3ba57d" width="400"/>
+  <img src="https://github.com/user-attachments/assets/3ee11f33-ae21-442e-9f81-8898286ea276" width="400"/>
+</div>
 
  ### 📌 7. Chainlit 구현 화면
+<img width="722" alt="2025-06-30_2 29 40" src="https://github.com/user-attachments/assets/df9b9eea-cd4d-432b-9e45-46a750e1338f" />
 
  ### 📌 8. 한줄 회고
 
- - 기원준:
- - 강지윤:
- - 최호연:
- - 이명인:
+ - 👤기원준: Langchain과 Langgraph의 차이점 / github "Legend Push"
+ - 👤강지윤: Langgraph 꿀잼
+ - 👤최호연: 
+ - 👤이명인:
