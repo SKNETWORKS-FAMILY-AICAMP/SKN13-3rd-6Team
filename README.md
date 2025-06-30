@@ -105,16 +105,18 @@
 ---
 
 ### 📌 2. 기술 스택
-| 분야                   | 기술 및 라이브러리                                                                                                                                                                                                                                       |
-|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 프로그래밍 언어 & 개발환경 | <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white" /> <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=https://gist.githubusercontent.com/yourusername/uniqueid/raw/vscode-logo.svg&logoColor=white" />|
-| LLM 체인 및 자연어 처리   |![LangChain](https://img.shields.io/badge/LangChain-005F73?style=for-the-badge&logo=LangChain&logoColor=white)                                                                                                     |
-| LLM 모델               | <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=OpenAI&logoColor=white" /> |
-| 데이터 수집              | <img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=OpenAI&logoColor=white" /> |
-| 데이터베이스 및 임베딩     | <img src="https://img.shields.io/badge/ChromaDB-FF6F61?style=for-the-badge&logo=https://gist.githubusercontent.com/yourusername/uniqueid/raw/chromadb-logo.svg&logoColor=white" />                                                                                                   |
-| 환경변수 관리            | <img src="https://img.shields.io/badge/python_dotenv-000000?style=for-the-badge&logo=Python&logoColor=white" />                                                                                                                                      |
-| 문서 로딩               | <img src="https://img.shields.io/badge/PyPDFLoader-4B8BBE?style=for-the-badge&logo=PyPDFLoader&logoColor=white" />                                                                                                                                              |
-| 협업 및 형상관리        | <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white" /> <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white" /> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" /> |
+| **분야**              | **기술 및 라이브러리**                                                                                                                                                                                                                            |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🖥️ 프로그래밍 언어 & 개발환경 | <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white" /> <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=VisualStudioCode&logoColor=white" />            |
+| 🔗 LLM 체인 및 워크플로우   | <img src="https://img.shields.io/badge/LangChain-005F73?style=for-the-badge&logo=LangChain&logoColor=white" /> <img src="https://img.shields.io/badge/LangGraph-000000?style=for-the-badge&logo=LangChain&logoColor=white" />             |
+| 🧠 LLM 모델           | <img src="https://img.shields.io/badge/OpenAI%20GPT--4.1-412991?style=for-the-badge&logo=OpenAI&logoColor=white" /> <img src="https://img.shields.io/badge/OpenAI%20Embeddings-10A37F?style=for-the-badge&logo=OpenAI&logoColor=white" /> |
+| 📄 문서 로딩 및 전처리      | <img src="https://img.shields.io/badge/PyMuPDF-00599C?style=for-the-badge&logo=AdobeAcrobatReader&logoColor=white" /> <img src="https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white" />            |
+| 📦 벡터 저장소 및 임베딩     | <img src="https://img.shields.io/badge/ChromaDB-FF6F61?style=for-the-badge&logo=Chroma&logoColor=white" />                                                                                                                                |
+| 🌐 데이터 수집           | <img src="https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=Selenium&logoColor=white" /> <img src="https://img.shields.io/badge/requests-7A88CF?style=for-the-badge&logo=Python&logoColor=white" />                   |
+| 🤖 챗봇 인터페이스         | <img src="https://img.shields.io/badge/Chainlit-FFCC00?style=for-the-badge&logo=Lightning&logoColor=black" />                                                                                                                             |
+| 🔐 환경 변수 및 설정 관리    | <img src="https://img.shields.io/badge/python_dotenv-000000?style=for-the-badge&logo=Python&logoColor=white" />                                                                                                                           |
+| 💬 메시지 및 커뮤니케이션     | <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white" />                                                                                                                                |
+| 📁 협업 및 형상 관리       | <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white" /> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" />                               |
 
 ### 📌 3. 파일구조
 
