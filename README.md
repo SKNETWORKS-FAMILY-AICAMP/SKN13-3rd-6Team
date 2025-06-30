@@ -120,31 +120,31 @@
 
 ### 📌 3. 파일구조
 
-📁 SKN13-3rd-6Team
-├─ 📁 Code/
-│   ├─ 📁 RAG_APP/
-│   │   ├─Legend_Chain.py
-│   │   ├─ chainlit.py
-│   │   ├─ tool.spy
-│   ├─ 📁 preprocessing/
-│   │   ├─Chromadb.ipynb
-├─ 📁 Dataset/
-│   ├─ 📁 csv/
-│   ├─ ├─kakao_page.csv
-│   │   ├─youtube_copyright_tools.csv
-│   │   ├─└─ ... 
-│   ├─ 📁 json/
-│   │   ├─instagram_faq_answers.json
-│   │   ├─youtube_support_faq.json
-│   ├─ 📁 pdf/
-│   │   ├─저작권법.pdf
-│   │   ├─US_copyright.pdf
-│   │   ├─└─ ... 
-├─ 📁 Document/
-│   ├─ 요구사항 명세서.md
-├─ 📁 Structure/
-│   ├─ 플로우차트.pdf
-│   ├─ System Architecture.pdf
+📁 SKN13-3rd-6Team <br>
+├─ 📁 Code/  <br>
+│   ├─ 📁 RAG_APP/ <br>
+│   │   ├─Legend_Chain.py <br>
+│   │   ├─ chainlit.py <br> 
+│   │   ├─ tool.spy <br>
+│   ├─ 📁 preprocessing/ <br>
+│   │   ├─Chromadb.ipynb <br>
+├─ 📁 Dataset/<br>
+│   ├─ 📁 csv/<br>
+│   ├─ ├─kakao_page.csv<br>
+│   │   ├─youtube_copyright_tools.csv<br>
+│   │   ├─└─ ... <br>
+│   ├─ 📁 json/<br>
+│   │   ├─instagram_faq_answers.json<br>
+│   │   ├─youtube_support_faq.json<br>
+│   ├─ 📁 pdf/<br>
+│   │   ├─저작권법.pdf<br>
+│   │   ├─US_copyright.pdf<br>
+│   │   ├─└─ ... <br>
+├─ 📁 Document/<br>
+│   ├─ 요구사항 명세서.md<br>
+├─ 📁 Structure/<br>
+│   ├─ 플로우차트.pdf<br>
+│   ├─ System Architecture.pdf<br>
 ├─ README.md
 
 ### 📌 4. 데이터 수집 및 전처리
