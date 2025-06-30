@@ -210,7 +210,7 @@
 ### 📌 5. RAG 기반 챗봇 구현🤖
 
 🔧**시스템 아키텍처**<br>
-<img src="https://github.com/user-attachments/assets/47b56c74-dbff-4418-9147-f6bc3aca8f15" width="600" height="400" alt="system"> <br>
+<img src="https://github.com/user-attachments/assets/47b56c74-dbff-4418-9147-f6bc3aca8f15" width="800" alt="system"> <br>
 
 
 - LangGraph : 상태 기반 대화 흐름 제어
