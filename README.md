@@ -222,9 +222,11 @@
 
 ⏩ **Langgraph 진화 과정**<br>
 
-![001](https://github.com/user-attachments/assets/c9891f1a-0463-418f-8ab5-384c37bcb37b)
+<img width="800" alt="2025-06-30_2 49 06" src="https://github.com/user-attachments/assets/c9891f1a-0463-418f-8ab5-384c37bcb37b"> <br>
+
 
 🧩 **주요 노드 및 흐름 설명**<br>
+
 <img src="https://github.com/user-attachments/assets/f3036216-f3b0-40ee-ade6-dd2bac03feae" width="400" height="700" alt="langgraph_image"> <br>
 
 | **노드 이름**             | **설명**                                                                                                           |
@@ -268,7 +270,9 @@
 </div>
 
  ### 📌 7. Chainlit 구현 화면
-<img width="722" alt="2025-06-30_2 29 40" src="https://github.com/user-attachments/assets/df9b9eea-cd4d-432b-9e45-46a750e1338f" />
+ 
+<img width="800" alt="2025-06-30_2 49 06" src="https://github.com/user-attachments/assets/374d9cff-3c68-4507-aee9-1c5c390a617d" />
+<img width="522" alt="2025-06-30_2 29 40" src="https://github.com/user-attachments/assets/df9b9eea-cd4d-432b-9e45-46a750e1338f" />
 
  ### 📌 8. 한줄 회고
 
