@@ -5,7 +5,7 @@
 **개발기간:** 2025.06.26 ~ 2025.06.30
 
 ## 💻 팀 소개
-팀명: 공구함
+## 팀명: 공구함(00과 99즈)🪛
 
 <!-- | **기원준👨‍💻** | **강지윤👩‍💻** | **최호연👨‍💻** | **이명인👨‍💻** |
 |:--------------:|:--------------:|:--------------:|:--------------:|
@@ -21,7 +21,7 @@
       <img src="https://github.com/user-attachments/assets/a35d2590-93c0-4b86-9145-4ec912ead0b3" width="100"/><br/>강지윤👩‍💻
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/1f136ac8-52e1-4efd-bcdd-f112a0035666" width="100"/><br/>최호연👨‍💻
+      <img src="https://github.com/user-attachments/assets/3ab67e76-86ae-4f51-b952-645dbd4c26f1" width="60"/><br/>최호연👨‍💻
     </td>
     <td align="center">
       <img src="https://github.com/user-attachments/assets/044c3463-0670-4fa5-ab1e-cba03e4029b5" width="100"/><br/>이명인👨‍💻
@@ -41,6 +41,7 @@
 </table>
 
 
+
 ### 📌 1. 프로젝트 개요
 
 #### 1.1. 개발 동기 및 목적  
@@ -49,8 +50,7 @@
 
 👉 **디지털 콘텐츠 산업의 경제적 규모**<br>
 과학기술정보통신부와 한국전파진흥협회가 발표한 <디지털 크리에이터 미디어 산업 실태조사>에 따르면, 국내 디지털크리에이터미디어 사업체는 총 11,123개, 종사자는 35,375명, 연간 산업 매출은 약 4조 1,254억 원에 달함
-
-![매일경제](https://github.com/user-attachments/assets/2ac781e2-0cfc-459d-a37c-f60095352244)<br>
+<img src="https://github.com/user-attachments/assets/2ac781e2-0cfc-459d-a37c-f60095352244" width="800" height="350" alt="저작권협회 챗봇"> <br>
 (출처: 매일경제 https://www.mk.co.kr/news/culture/10918121)
 
 ❗하지만 그에 반해, **저작권에 대한 정보 접근성과 이해도는 여전히 부족한 상황**임
@@ -59,15 +59,16 @@
 
 예를 들어, 유튜브와 같은 해외 플랫폼을 활용할 경우, 국내 저작권법을 따라야 하는지, 플랫폼의 정책을 따르는 것이 우선인지, 해외 저작권 기준까지 고려해야 하는지 등이 명확하지 않게 느껴지며, 관련 정보를 일일이 찾아보기 어렵고 복잡하다는 현실적인 문제점이 존재함
 
-![크리에이터 실태조사](https://github.com/user-attachments/assets/2775a996-f914-4018-922e-bb41e7b15369)<br>
-(출처: 크리에이터, 대세와 직업 그 사이 <개인 미디어 콘텐츠 크리에이터 실태 조사>   https://www.kocca.kr/trend/vol29/sub/s32.html)
+<img src="https://github.com/user-attachments/assets/0849ba07-766c-4c05-bdb8-59a88f180498" width="800" height="350" alt="저작권 관련 기사"> <br>
+(출처: 경기도의회 웹진 <SNS에 공유만 했는데, 저작권법 위반이라니?> https://webzine.ggc.go.kr/?p=38108&utm_source=chatgpt.com)
 
 
 #### 1.2. 본 챗봇의 차별성
 
 한국저작권협회에서는 챗봇 서비스를 제공하고 있긴 하지만, 다음과 같은 한계점 존재❗
 
-![저작권협회 챗봇](https://github.com/user-attachments/assets/d2b869dc-4cf4-4d76-b924-4e0f5df832e3)
+<img src="https://github.com/user-attachments/assets/d2b869dc-4cf4-4d76-b924-4e0f5df832e3" width="500" height="600" alt="저작권협회 챗봇"> <br>
+
 
 🚫 **사전에 등록된 질문-답변(Q&A) 데이터베이스**를 기반으로 하기 때문에 **사용자의 구체적인 상황이나 맥락을 반영하지 못함**
 
@@ -115,8 +116,12 @@
 | 문서 로딩               | <img src="https://img.shields.io/badge/PyPDFLoader-4B8BBE?style=for-the-badge&logo=PyPDFLoader&logoColor=white" />                                                                                                                                              |
 | 협업 및 형상관리        | <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white" /> <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white" /> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" /> |
 
+### 📌 3. 파일구조
 
-### 📦 3. 데이터 수집 및 전처리
+To. 원준
+요기에 파일 구조 넣어줘!
+
+### 📌 4. 데이터 수집 및 전처리
 
 ✅ **데이터 내용에 따른 수집 방식 및 형태**
 
@@ -176,7 +181,7 @@
 | **`source`**    | 특정 키워드 포함 시 수동 분류:<br> - `"저작권법"` → `"저작권법"`<br> - `"dmca"` → `"DMCA"`<br> - `"공공누리"`, `"kogl"` → `"KOGL"`<br> - `"크리에이티브 커먼즈"` → `"CC"`                           | `"KOGL"`, `"DMCA"` 등 |
 | **`topic`**     | 사전 정의된 키워드에 따라 분류:<br> - `"음악"`, `"배경음악"` → `"음악사용"`<br> - `"ai"`, `"인공지능"` → `"ai저작권"`<br> - `"인용"` → `"인용"`<br> - `"계약"` → `"저작권계약"`<br> - `"공공저작물"` → `"공공저작물"` | `"음악사용, ai저작권"` 등    |
 
-### 🤖 4. RAG 기반 챗봇 구현
+### 📌 5. RAG 기반 챗봇 구현🤖
 
 🔧**시스템 아키텍처**
 [이미지 첨부 예정]
@@ -186,8 +191,11 @@
 - ChromaDB + OpenAI Embedding : 벡터 검색 (Retrieval)
 - Chainlit : 대화형 웹 UI 프론트엔드
 
-🧩 **주요 노드 및 흐름 설명**
-| 노드                    | 설명                                                                                |
+🧩 **주요 노드 및 흐름 설명**<br>
+<img src="https://github.com/user-attachments/assets/f3036216-f3b0-40ee-ade6-dd2bac03feae" width="500" height="700" alt="langgraph_image"> <br>
+
+| 노드                    | 
+설명                                                                                |
 | --------------------- | --------------------------------------------------------------------------------- |
 | `extract_name`        | 사용자 이름 추출 (예: "나 홍길동이야") → 맞춤형 응답에 활용                                             |
 | `hyde`                | HYDE 기법으로 검색에 적합한 문장 생성 (`query → hyde_answer`)                                   |
@@ -206,7 +214,10 @@
 | "크리에이티브 커먼즈가 뭐야?"       | HYDE → retrieve → synthesize\_response          | CC 정책 PDF에서 내용 추출   |
 | "최근 인공지능 관련 저작권 뉴스 알려줘" | tool\_call → search\_web → synthesize\_response | 외부 검색 툴 호출          |
 
-### 📁 5. 파일구조
+⏩ **Langgraph 개발 과정 문서**
 
-To. 원준
-요기에 파일 구조 넣어줘! 
+ ### 📌 6. 챗봇 평가지표()
+
+ ### 📌 7. Chainlit 구현 화면
+
+ ### 📌 8. 한줄 회고
