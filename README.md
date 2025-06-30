@@ -258,9 +258,9 @@
 | Context Recall    | 0.8000     |
 | Context Precision | 0.8000     |
 
-⏩ Faithfulness는 답변이 content와 얼마나 일치하는지를,
-Answer Relevancy는 질문과의 관련성을,
-Context Recall/Precision은 검색된 문서가 정답과 얼마나 일치하는지를 나타냅니다.
+⏩개발 최종목표 : **사용자의 개별 맥락과 경험을 반영하고, 최신 정보에 기반한 신뢰도 높은 응답을 제공하는 RAG 기반 지능형 챗봇 어플리케이션**을 개발하는 것<br>
+-> fatihfulness(생성된 답변이 얼마나 주어진 검색 문서들(context)를 잘 반영해서 생성되었는지 평가)이 가장 중요한 챗봇이라고 할 수 있음!
+
 <div style="display: flex; justify-content: space-between; gap: 10px;">
   <img src="https://github.com/user-attachments/assets/109834c9-2c17-483d-baaa-5c88536adb68" width="400"/>
   <img src="https://github.com/user-attachments/assets/e1b971e6-a398-477d-b9b3-f1fe8b3ba57d" width="400"/>
@@ -273,6 +273,6 @@ Context Recall/Precision은 검색된 문서가 정답과 얼마나 일치하는
  ### 📌 8. 한줄 회고
 
  - 👤기원준: Langchain과 Langgraph의 차이점 / github "Legend Push"
- - 👤강지윤: Langgraph 꿀잼
+ - 👤강지윤: Langgraph 꿀잼. 
  - 👤최호연: 
  - 👤이명인:
