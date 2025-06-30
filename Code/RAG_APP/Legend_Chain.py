@@ -254,8 +254,69 @@ def process_tool_result(state: GraphState):
         print("DEBUG: process_tool_result called but no recent ToolMessage found.")
         return {"final_answer": "도구 실행 결과를 처리할 수 없습니다.", "source": "llm"}
 
+## 한번에 답변 출력
+# def synthesize_response(state: GraphState):
+#     print("DEBUG: Entering synthesize_response node.")
+#     context_to_synthesize = state.context_str 
+#     if state.tool_result: # tool_result가 있다면 (도구 호출 또는 LLM 직접 응답)
+#         context_to_synthesize = state.tool_result
+#         print(f"DEBUG: Synthesizing with Tool Result (or direct LLM response): {context_to_synthesize[:200]}...")
+#     elif not context_to_synthesize: # RAG 컨텍스트도 없고 tool_result도 없는 경우
+#         print("DEBUG: No context or tool result to synthesize with.")
+#         # 이 경우 LLM이 chat_history만으로 답변 시도
+#         context_to_synthesize = "" 
 
-def synthesize_response(state: GraphState):
+#     try:
+#         # chat_history를 프롬프트에 포함하여 LLM이 대화 흐름을 이해하도록 함
+#         # LangChain의 messages 리스트를 그대로 전달
+#         final_answer_message = response_synthesis_chain.invoke({
+#             "query": state.query,
+#             "context": context_to_synthesize,
+#             "user_name": state.user_name,
+#             "chat_history": state.messages[:-1] # 마지막 사용자 메시지 제외 (현재 쿼리이므로)
+#         })
+#         final_answer_text = final_answer_message.content
+#         print(f"DEBUG: Synthesized Final Answer: '{final_answer_text}'")
+        
+#         # LLM_tool_fallback이 synthesize_response로 넘어왔을 때 source를 llm으로 변경
+#         source_for_output = state.source
+#         if source_for_output == "llm_tool_fallback":
+#             source_for_output = "llm"
+
+#         return {
+#             "final_answer": final_answer_text,
+#             "source": source_for_output
+#         }
+#     except Exception as e:
+#         print(f"ERROR: Response synthesis failed: {e}")
+#         return {"final_answer": "죄송합니다. 답변을 생성하는 데 실패했습니다.", "source": "llm"}
+
+# def synthesize_response(state: GraphState): # async 키워드 제거, yield 제거
+#     print("DEBUG: Entering synthesize_response node (non-streaming preparation).")
+#     context_to_synthesize = state.context_str
+#     if state.tool_result:
+#         context_to_synthesize = state.tool_result
+#         print(f"DEBUG: Synthesizing with Tool Result (or direct LLM response): {context_to_synthesize[:200]}...")
+#     elif not context_to_synthesize:
+#         print("DEBUG: No context or tool result to synthesize with.")
+#         context_to_synthesize = ""
+
+#     # LLM_tool_fallback이 synthesize_response로 넘어왔을 때 source를 llm으로 변경
+#     source_for_output = state.source
+#     if source_for_output == "llm_tool_fallback":
+#         source_for_output = "llm"
+
+#     # 여기서는 최종 답변을 생성하지 않고, 답변 생성에 필요한 정보만 반환
+#     return {
+#         "final_answer_context": context_to_synthesize, # LLM 프롬프트에 들어갈 최종 컨텍스트
+#         "final_answer_user_name": state.user_name,
+#         "final_answer_chat_history": state.messages[:-1],
+#         "final_source": source_for_output # 최종 출처 정보
+#     }
+
+## 실시간 streaming
+
+async def synthesize_response(state: GraphState): # async 키워드 확인
     print("DEBUG: Entering synthesize_response node.")
     context_to_synthesize = state.context_str 
     if state.tool_result: # tool_result가 있다면 (도구 호출 또는 LLM 직접 응답)
@@ -263,33 +324,42 @@ def synthesize_response(state: GraphState):
         print(f"DEBUG: Synthesizing with Tool Result (or direct LLM response): {context_to_synthesize[:200]}...")
     elif not context_to_synthesize: # RAG 컨텍스트도 없고 tool_result도 없는 경우
         print("DEBUG: No context or tool result to synthesize with.")
-        # 이 경우 LLM이 chat_history만으로 답변 시도
         context_to_synthesize = "" 
 
+    final_answer_full_text = "" # 스트리밍된 전체 답변을 누적할 변수
+
+    # !!!! 이 부분이 중요합니다. state.source 값을 가져와 처리합니다. !!!!
+    source_for_output = state.source 
+    print(f"DEBUG: synthesize_response - Initial state.source received: '{source_for_output}'")
+
+    # "llm_tool_fallback"을 "llm"으로 변환
+    if source_for_output == "llm_tool_fallback":
+        source_for_output = "llm"
+        print(f"DEBUG: synthesize_response - Source updated to 'llm'.")
+    elif source_for_output == "": # source가 비어있다면 (초기 상태이거나 설정되지 않은 경우) 기본값을 'llm'으로
+        source_for_output = "llm"
+        print(f"DEBUG: synthesize_response - Source was empty, set to 'llm'.")
+    else:
+        print(f"DEBUG: synthesize_response - Source remains '{source_for_output}'.")
+
+
     try:
-        # chat_history를 프롬프트에 포함하여 LLM이 대화 흐름을 이해하도록 함
-        # LangChain의 messages 리스트를 그대로 전달
-        final_answer_message = response_synthesis_chain.invoke({
+        async for chunk in response_synthesis_chain.astream({
             "query": state.query,
             "context": context_to_synthesize,
             "user_name": state.user_name,
-            "chat_history": state.messages[:-1] # 마지막 사용자 메시지 제외 (현재 쿼리이므로)
-        })
-        final_answer_text = final_answer_message.content
-        print(f"DEBUG: Synthesized Final Answer: '{final_answer_text}'")
-        
-        # LLM_tool_fallback이 synthesize_response로 넘어왔을 때 source를 llm으로 변경
-        source_for_output = state.source
-        if source_for_output == "llm_tool_fallback":
-            source_for_output = "llm"
+            "chat_history": state.messages[:-1] 
+        }):
+            if chunk.content: 
+                final_answer_full_text += chunk.content 
+                yield {"final_answer": final_answer_full_text, "source": source_for_output}
 
-        return {
-            "final_answer": final_answer_text,
-            "source": source_for_output
-        }
+        print(f"DEBUG: Synthesized Final Answer (full): '{final_answer_full_text}' with source: '{source_for_output}'")
+        yield {"final_answer": final_answer_full_text, "source": source_for_output}
+
     except Exception as e:
         print(f"ERROR: Response synthesis failed: {e}")
-        return {"final_answer": "죄송합니다. 답변을 생성하는 데 실패했습니다.", "source": "llm"}
+        yield {"final_answer": "죄송합니다. 답변을 생성하는 데 실패했습니다.", "source": "llm"}
 
 
 def extract_user_name(state: GraphState):
