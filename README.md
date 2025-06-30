@@ -181,7 +181,7 @@
 ├─ 📁 Structure/<br>
 │   ├─ 플로우차트.pdf<br>
 │   ├─ System Architecture.pdf<br>
-├─ README.md
+├─ README.md<br>
 ├─ requirements.txt
 
 ### 📌 5. 데이터 수집 및 전처리
