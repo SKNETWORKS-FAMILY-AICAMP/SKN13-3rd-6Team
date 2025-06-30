@@ -194,18 +194,18 @@ To. 원준
 🧩 **주요 노드 및 흐름 설명**<br>
 <img src="https://github.com/user-attachments/assets/f3036216-f3b0-40ee-ade6-dd2bac03feae" width="500" height="700" alt="langgraph_image"> <br>
 
-| 노드                    | 
-설명                                                                                |
-| --------------------- | --------------------------------------------------------------------------------- |
-| `extract_name`        | 사용자 이름 추출 (예: "나 홍길동이야") → 맞춤형 응답에 활용                                             |
-| `hyde`                | HYDE 기법으로 검색에 적합한 문장 생성 (`query → hyde_answer`)                                   |
-| `check_route`         | HYDE 결과와 context로 판단하여 라우팅: <br>① `use_rag` <br>② `tool_call` <br>③ `llm_message` |
-| `retrieve`            | RAG 컨텍스트 문서 검색 수행 (`retriever.invoke(hyde_answer)`)                               |
-| `call_tool_llm`       | 도구 호출이 필요한 경우, LLM이 어떤 툴을 사용할지 판단                                                 |
-| `tool_runner`         | 해당 도구 실행 (`search_web`, 외부 API 등)                                                 |
-| `process_tool_result` | 도구 응답 결과 정제 및 유효성 검증                                                              |
-| `synthesize_response` | LLM이 최종 사용자 응답 생성 (이름, 대화 이력, context 반영)                                         |
-| `fallback`            | 검색/도구 모두 실패 시 기본 메시지 생성 (또는 LLM 재질문)                                              |
+| **노드 이름**             | **설명**                                                                                                           |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `extract_name`        | 사용자 이름 추출 (예: “나 홍길동이야”) → 맞춤형 응답에 활용                                                                            |
+| `hyde`                | HYDE 기법으로 검색에 적합한 문장 생성 (`query → hyde_answer`)                                                                  |
+| `check_route`         | HYDE 결과와 context를 바탕으로 라우팅 분기 결정:<br>① `use_rag` (검색 사용)<br>② `tool_call` (도구 호출)<br>③ `llm_message` (LLM 직접 응답) |
+| `retrieve`            | RAG 컨텍스트 문서 검색 수행 (`retriever.invoke(hyde_answer)`)                                                              |
+| `call_tool_llm`       | 도구 호출이 필요한 경우, LLM이 사용할 툴 판단 (`search_web` 등)                                                                    |
+| `tool_runner`         | LLM이 선택한 실제 툴 실행 (예: `ToolNode`)                                                                                 |
+| `process_tool_result` | 도구 실행 결과 정제 및 요약, 유효성 검증                                                                                         |
+| `synthesize_response` | 최종 응답 생성: 사용자 이름, 대화 이력, RAG/Tool 결과 기반으로 답변 생성                                                                  |
+| `fallback`            | 검색/도구 모두 실패 시 기본 메시지 출력 또는 LLM 재질문 시도                                                                            |
+
 
 💬 **예시 질의응답 시나리오**
 | 사용자 질문                  | 처리 경로                                           | 설명                  |
