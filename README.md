@@ -118,7 +118,43 @@
 | 💬 메시지 및 커뮤니케이션     | <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white" />                                                                                                                                |
 | 📁 협업 및 형상 관리       | <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white" /> <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white" />                               |
 
-### 📌 3. 파일구조
+## Chainlit & LangGraph 기반 챗봇 시스템 요구사항 명세서
+
+---
+
+## 📌 3. 요구사항 명세서
+
+### 기능 요구사항 (Functional Requirements)
+
+| 구분 | 요구사항 ID | 요구사항 명 | 상세 설명 | 관련 코드/기능 |
+| :--- | :--- | :--- | :--- | :--- |
+| **대화 관리** | FR-C-01 | 사용자 입력 처리 | 시스템은 사용자로부터 텍스트 형식의 질문을 입력받을 수 있어야 한다. | `chainlit @cl.on_message` |
+|  | FR-C-02 | 응답 메시지 표시 | 시스템은 생성된 답변을 사용자 인터페이스에 텍스트 형식으로 표시해야 한다. | `@cl.on_message` 내 `cl.Message.send()` |
+|  | FR-C-03 | 상태 기반 대화 기억 및 맥락 유지 | 시스템은 각 사용자 세션(`thread_id`)별로 대화 기록을 저장하고 새로운 답변 생성 시 이전 대화 흐름을 반영해야 한다. | `MemorySaver`, `thread_id`, `GraphState.messages`, `response_synthesis_chain` |
+| **개인화** | FR-P-01 | 사용자 이름 추출 | 시스템은 대화에서 사용자의 이름을 정확히 추출할 수 있어야 한다. | `extract_name` 노드, `entity_extraction_chain` |
+|  | FR-P-02 | 이름 활용 응답 | 추출된 이름을 응답에 포함하여 친근한 표현을 생성해야 한다. | `synthesize_response` 노드, `response_synthesis_chain` |
+| **로직 / 라우팅** | FR-L-01 | HyDE 적용 | RAG 검색 최적화를 위해 HyDE 방식으로 가상 응답을 생성해야 한다. | `hyde` 노드, `hyde_chain` |
+|  | FR-L-02 | 동적 경로 결정 | 질문에 따라 'RAG', '도구 사용', 'LLM 직접 답변' 중 최적 경로를 선택해야 한다. | `check_route` 노드, `llm_check_chain` |
+| **RAG** | FR-R-01 | 관련 문서 검색 | Chroma DB에서 관련 문서를 검색해야 한다. | `retrieve` 노드 |
+|  | FR-R-02 | 정보 기반 답변 | 검색된 문서 내용을 기반으로 응답을 생성해야 한다. | `synthesize_response` 노드 |
+| **도구 사용** | FR-T-01 | 필요 도구 선택 | 질문에 따라 적절한 도구를 선택할 수 있어야 한다. | `call_tool_llm` 노드, `.bind_tools(TOOLS)` |
+|  | FR-T-02 | 도구 실행 | 선택된 도구를 실행하고 결과를 받아야 한다. | `tool_runner` 노드 |
+|  | FR-T-03 | 결과 가공/요약 | 도구의 출력 결과를 요약 및 정리하여 사용해야 한다. | `process_tool_result` 노드 |
+|  | FR-T-04 | 웹 검색 결과 처리 | 웹 검색 결과를 구조화된 형식으로 가공해야 한다. | `process_tool_result` 내 JSON 파싱 로직 |
+| **출력** | FR-O-01 | 최종 답변 합성 | 다양한 컨텍스트를 종합하여 응답을 생성해야 한다. | `synthesize_response` 노드 |
+|  | FR-O-02 | 정보 출처 명시 | 응답과 함께 출처 정보를 사용자에게 표시해야 한다. | `@cl.on_message` 내 출력 포맷팅 |
+
+### 비기능 요구사항 (Non-functional Requirements)
+
+| 구분 | 요구사항 ID | 요구사항 명 | 상세 설명 | 관련 코드/기능 |
+| :--- | :--- | :--- | :--- | :--- |
+| **성능** | NFR-PF-01 | 응답 시간 | 15초 이내에 응답을 제공해야 한다. | 시스템 전반 |
+| **보안** | NFR-SC-01 | API 키 관리 | 민감한 키 정보는 환경 변수로 관리되어야 한다. | `dotenv` 사용 |
+| **사용성** | NFR-US-01 | 직관적 UI | 별도 학습 없이 UI를 사용할 수 있어야 한다. | `chainlit` 프레임워크 |
+| **유지보수성** | NFR-MN-01 | 모듈화 구조 | 노드 단위로 분리되어 있어야 유지보수에 용이하다. | LangGraph 구조 전체 |
+
+
+### 📌 4. 파일구조
 
 📁 SKN13-3rd-6Team <br>
 ├─ 📁 Code/  <br>
@@ -147,7 +183,7 @@
 │   ├─ System Architecture.pdf<br>
 ├─ README.md
 
-### 📌 4. 데이터 수집 및 전처리
+### 📌 5. 데이터 수집 및 전처리
 
 ✅ **데이터 내용에 따른 수집 방식 및 형태**
 
@@ -207,7 +243,7 @@
 | **`source`**    | 특정 키워드 포함 시 수동 분류:<br> - `"저작권법"` → `"저작권법"`<br> - `"dmca"` → `"DMCA"`<br> - `"공공누리"`, `"kogl"` → `"KOGL"`<br> - `"크리에이티브 커먼즈"` → `"CC"`                           | `"KOGL"`, `"DMCA"` 등 |
 | **`topic`**     | 사전 정의된 키워드에 따라 분류:<br> - `"음악"`, `"배경음악"` → `"음악사용"`<br> - `"ai"`, `"인공지능"` → `"ai저작권"`<br> - `"인용"` → `"인용"`<br> - `"계약"` → `"저작권계약"`<br> - `"공공저작물"` → `"공공저작물"` | `"음악사용, ai저작권"` 등    |
 
-### 📌 5. RAG 기반 챗봇 구현🤖
+### 📌 6. RAG 기반 챗봇 구현🤖
 
 🔧**시스템 아키텍처**<br>
 <img src="https://github.com/user-attachments/assets/47b56c74-dbff-4418-9147-f6bc3aca8f15" width="800" alt="system"> <br>
@@ -251,7 +287,7 @@
 | "크리에이티브 커먼즈가 뭐야?"       | HYDE → retrieve → synthesize\_response          | CC 정책 PDF에서 내용 추출   |
 | "최근 인공지능 관련 저작권 뉴스 알려줘" | tool\_call → search\_web → synthesize\_response | 외부 검색 툴 호출          |
 
- ### 📌 6. 챗봇 성능 평가 결과
+ ### 📌 7. 챗봇 성능 평가 결과
  ✅ 성능 요약 지표
 | Metric            | Score      |
 | ----------------- | ---------- |
@@ -269,12 +305,12 @@
   <img src="https://github.com/user-attachments/assets/3ee11f33-ae21-442e-9f81-8898286ea276" width="400"/>
 </div>
 
- ### 📌 7. Chainlit 구현 화면
+ ### 📌 8. Chainlit 구현 화면
  
 <img width="800" alt="2025-06-30_2 49 06" src="https://github.com/user-attachments/assets/374d9cff-3c68-4507-aee9-1c5c390a617d" />
 <img width="522" alt="2025-06-30_2 29 40" src="https://github.com/user-attachments/assets/df9b9eea-cd4d-432b-9e45-46a750e1338f" />
 
- ### 📌 8. 한줄 회고
+ ### 📌 9. 한줄 회고
 
  - 👤기원준: Langchain과 Langgraph의 차이점 / github "Legend Push"
  - 👤강지윤: Langgraph 꿀잼. 
