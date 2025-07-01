@@ -161,7 +161,7 @@
 │   ├─ 📁 RAG_APP/ <br>
 │   │   ├─Legend_Chain.py <br>
 │   │   ├─ chainlit.py <br> 
-│   │   ├─ tool.spy <br>
+│   │   ├─ tools.py <br>
 │   ├─ 📁 preprocessing/ <br>
 │   │   ├─Chromadb.ipynb <br>
 ├─ 📁 Dataset/<br>
